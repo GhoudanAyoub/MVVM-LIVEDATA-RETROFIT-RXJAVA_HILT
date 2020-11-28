@@ -1,4 +1,4 @@
-# Model View View Model with Live Data Using Retrofit Network Call
+# ModelView View Model with LiveData, RxJava Using Retrofit Network Call
 > How You can use mvvm for RxJava LiveData and retofit its a piece of cake follow these steps hope this will help you. 
 
 ![](header.png)
