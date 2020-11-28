@@ -1,0 +1,180 @@
+{
+  "Headline": {
+    "EffectiveDate": "2020-05-10T08:00:00+02:00",
+    "EffectiveEpochDate": 1589090400,
+    "Severity": 3,
+    "Text": "Thunderstorms in the area Sunday morning through late Sunday night",
+    "Category": "thunderstorm",
+    "EndDate": "2020-05-11T08:00:00+02:00",
+    "EndEpochDate": 1589176800,
+    "MobileLink": "http://m.accuweather.com/en/fr/maroc/2606235/extended-weather-forecast/2606235?lang=en-us",
+    "Link": "http://www.accuweather.com/en/fr/maroc/2606235/daily-weather-forecast/2606235?lang=en-us"
+  },
+  "DailyForecasts": [
+    {
+      "Date": "2020-05-10T07:00:00+02:00",
+      "EpochDate": 1589086800,
+      "Temperature": {
+        "Minimum": {
+          "Value": 43.0,
+          "Unit": "F",
+          "UnitType": 18
+        },
+        "Maximum": {
+          "Value": 70.0,
+          "Unit": "F",
+          "UnitType": 18
+        }
+      },
+      "Day": {
+        "Icon": 15,
+        "IconPhrase": "Thunderstorms",
+        "HasPrecipitation": true,
+        "PrecipitationType": "Rain",
+        "PrecipitationIntensity": "Moderate"
+      },
+      "Night": {
+        "Icon": 18,
+        "IconPhrase": "Rain",
+        "HasPrecipitation": true,
+        "PrecipitationType": "Rain",
+        "PrecipitationIntensity": "Light"
+      },
+      "Sources": [
+        "AccuWeather"
+      ],
+      "MobileLink": "http://m.accuweather.com/en/fr/maroc/2606235/daily-weather-forecast/2606235?day=1&lang=en-us",
+      "Link": "http://www.accuweather.com/en/fr/maroc/2606235/daily-weather-forecast/2606235?day=1&lang=en-us"
+    },
+    {
+      "Date": "2020-05-11T07:00:00+02:00",
+      "EpochDate": 1589173200,
+      "Temperature": {
+        "Minimum": {
+          "Value": 38.0,
+          "Unit": "F",
+          "UnitType": 18
+        },
+        "Maximum": {
+          "Value": 53.0,
+          "Unit": "F",
+          "UnitType": 18
+        }
+      },
+      "Day": {
+        "Icon": 12,
+        "IconPhrase": "Showers",
+        "HasPrecipitation": true,
+        "PrecipitationType": "Rain",
+        "PrecipitationIntensity": "Light"
+      },
+      "Night": {
+        "Icon": 35,
+        "IconPhrase": "Partly cloudy",
+        "HasPrecipitation": false
+      },
+      "Sources": [
+        "AccuWeather"
+      ],
+      "MobileLink": "http://m.accuweather.com/en/fr/maroc/2606235/daily-weather-forecast/2606235?day=2&lang=en-us",
+      "Link": "http://www.accuweather.com/en/fr/maroc/2606235/daily-weather-forecast/2606235?day=2&lang=en-us"
+    },
+    {
+      "Date": "2020-05-12T07:00:00+02:00",
+      "EpochDate": 1589259600,
+      "Temperature": {
+        "Minimum": {
+          "Value": 43.0,
+          "Unit": "F",
+          "UnitType": 18
+        },
+        "Maximum": {
+          "Value": 57.0,
+          "Unit": "F",
+          "UnitType": 18
+        }
+      },
+      "Day": {
+        "Icon": 3,
+        "IconPhrase": "Partly sunny",
+        "HasPrecipitation": false
+      },
+      "Night": {
+        "Icon": 36,
+        "IconPhrase": "Intermittent clouds",
+        "HasPrecipitation": false
+      },
+      "Sources": [
+        "AccuWeather"
+      ],
+      "MobileLink": "http://m.accuweather.com/en/fr/maroc/2606235/daily-weather-forecast/2606235?day=3&lang=en-us",
+      "Link": "http://www.accuweather.com/en/fr/maroc/2606235/daily-weather-forecast/2606235?day=3&lang=en-us"
+    },
+    {
+      "Date": "2020-05-13T07:00:00+02:00",
+      "EpochDate": 1589346000,
+      "Temperature": {
+        "Minimum": {
+          "Value": 42.0,
+          "Unit": "F",
+          "UnitType": 18
+        },
+        "Maximum": {
+          "Value": 59.0,
+          "Unit": "F",
+          "UnitType": 18
+        }
+      },
+      "Day": {
+        "Icon": 12,
+        "IconPhrase": "Showers",
+        "HasPrecipitation": true,
+        "PrecipitationType": "Rain",
+        "PrecipitationIntensity": "Light"
+      },
+      "Night": {
+        "Icon": 7,
+        "IconPhrase": "Cloudy",
+        "HasPrecipitation": false
+      },
+      "Sources": [
+        "AccuWeather"
+      ],
+      "MobileLink": "http://m.accuweather.com/en/fr/maroc/2606235/daily-weather-forecast/2606235?day=4&lang=en-us",
+      "Link": "http://www.accuweather.com/en/fr/maroc/2606235/daily-weather-forecast/2606235?day=4&lang=en-us"
+    },
+    {
+      "Date": "2020-05-14T07:00:00+02:00",
+      "EpochDate": 1589432400,
+      "Temperature": {
+        "Minimum": {
+          "Value": 45.0,
+          "Unit": "F",
+          "UnitType": 18
+        },
+        "Maximum": {
+          "Value": 61.0,
+          "Unit": "F",
+          "UnitType": 18
+        }
+      },
+      "Day": {
+        "Icon": 12,
+        "IconPhrase": "Showers",
+        "HasPrecipitation": true,
+        "PrecipitationType": "Rain",
+        "PrecipitationIntensity": "Light"
+      },
+      "Night": {
+        "Icon": 35,
+        "IconPhrase": "Partly cloudy",
+        "HasPrecipitation": false
+      },
+      "Sources": [
+        "AccuWeather"
+      ],
+      "MobileLink": "http://m.accuweather.com/en/fr/maroc/2606235/daily-weather-forecast/2606235?day=5&lang=en-us",
+      "Link": "http://www.accuweather.com/en/fr/maroc/2606235/daily-weather-forecast/2606235?day=5&lang=en-us"
+    }
+  ]
+}
