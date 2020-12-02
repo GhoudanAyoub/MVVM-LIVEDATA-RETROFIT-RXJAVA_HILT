@@ -1,4 +1,4 @@
-package com.example.testret.UI.main;
+package com.example.testret.Adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
