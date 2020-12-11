@@ -17,12 +17,27 @@ Android Studio:build.gradle(module app)
     implementation "com.squareup.retrofit2:converter-gson:2.4.0"
     implementation 'com.android.support:recyclerview-v7:29.0.0'
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    
+    
+    // Hilt
+    implementation "com.google.dagger:hilt-android:2.28-alpha"
+    annotationProcessor 'com.google.dagger:hilt-android-compiler:2.28-alpha'
+    implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha02'
+    annotationProcessor 'androidx.hilt:hilt-compiler:1.0.0-alpha02'
 ```
 
 Android Studio:build.gradle(Project):
 
 ```sh
-
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.google.dagger:hilt-android-gradle-plugin:2.28-alpha'
+    }
+}
 allprojects {
     repositories {
         google()
