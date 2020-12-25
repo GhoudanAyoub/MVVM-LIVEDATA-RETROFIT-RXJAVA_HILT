@@ -8,7 +8,8 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.testret.API.Repository;
-import com.example.testret.Models.DailyForecasts;
+import com.example.testret.Models.CurrentTemp;
+import com.example.testret.Models.HourlyTemp;
 import com.example.testret.Models.Temperature;
 
 import java.util.List;
@@ -26,9 +27,16 @@ public class PostViewModel extends ViewModel {
     }
 
     private MutableLiveData<List<Temperature>> liveData = new MutableLiveData<>();
-    private MutableLiveData<DailyForecasts> dailyForecastsMutableLiveData = new MutableLiveData<>();
+    private MutableLiveData<CurrentTemp> dailyForecastsMutableLiveData = new MutableLiveData<>();
+    private MutableLiveData<List<HourlyTemp>> hourlyTempMutableLiveData = new MutableLiveData<>();
 
-    public LiveData<DailyForecasts> getDailyForecastsMutableLiveData() {
+    public MutableLiveData<List<HourlyTemp>> getHourlyTempMutableLiveData() {
+        if (hourlyTempMutableLiveData == null)
+            hourlyTempMutableLiveData = new MutableLiveData<>();
+        return hourlyTempMutableLiveData;
+    }
+
+    public LiveData<CurrentTemp> getCurrentDailyForecastsMutableLiveData() {
         if (dailyForecastsMutableLiveData == null)
             dailyForecastsMutableLiveData = new MutableLiveData<>();
         return dailyForecastsMutableLiveData;
@@ -40,30 +48,33 @@ public class PostViewModel extends ViewModel {
         return liveData;
     }
 
-    public void getDaily(double lat,
-                         double lon,
-                         String exclude,
-                         String appid,
-                         String units) {
-        repository.getTempFromRepo(lat, lon, exclude, appid, units)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(dailyForecasts ->
-                                dailyForecastsMutableLiveData.setValue(dailyForecasts)
-                        , Throwable::printStackTrace);
-
-    }
-
-    public void getTempS(double lat,
-                         double lon,
-                         String exclude,
-                         String appid,
-                         String units) {
-        repository.getTempFromRepo(lat, lon, exclude, appid, units)
+    public void getTempS(double lat, double lon,String appid) {
+        repository.getTempFromRepo(lat, lon, appid)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(dailyForecasts ->
                                 liveData.setValue(dailyForecasts.getTemperatureList())
                         , Throwable::printStackTrace);
     }
+
+    public void getCurrent(double lat, double lon, String appid) {
+        repository.getTempFromRepo(lat, lon, appid)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(dailyForecasts ->
+                                dailyForecastsMutableLiveData.setValue(dailyForecasts.getCurrentTempList())
+                        , Throwable::printStackTrace);
+
+    }
+
+    public void getHourly(double lat, double lon, String appid) {
+        repository.getTempFromRepo(lat, lon, appid)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(dailyForecasts ->
+                                hourlyTempMutableLiveData.setValue(dailyForecasts.getHourlyTempList())
+                        , Throwable::printStackTrace);
+
+    }
+
 }

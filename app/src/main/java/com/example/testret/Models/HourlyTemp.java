@@ -4,17 +4,14 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class Temperature {
-
+public class HourlyTemp {
 
     @SerializedName("dt")
     private double dt;
-    @SerializedName("sunrise")
-    private double sunrise;
-    @SerializedName("sunset")
-    private double sunset;
     @SerializedName("temp")
-    private Temp temp;
+    private float temp;
+    @SerializedName("feels_like")
+    private float feels_like;
     @SerializedName("pressure")
     private int pressure;
     @SerializedName("humidity")
@@ -34,7 +31,8 @@ public class Temperature {
     @SerializedName("uvi")
     private float uvi;
 
-    public Temperature() { }
+    public HourlyTemp() {
+    }
 
     public double getDt() {
         return dt;
@@ -44,28 +42,20 @@ public class Temperature {
         this.dt = dt;
     }
 
-    public double getSunrise() {
-        return sunrise;
-    }
-
-    public void setSunrise(double sunrise) {
-        this.sunrise = sunrise;
-    }
-
-    public double getSunset() {
-        return sunset;
-    }
-
-    public void setSunset(double sunset) {
-        this.sunset = sunset;
-    }
-
-    public Temp getTemp() {
+    public float getTemp() {
         return temp;
     }
 
-    public void setTemp(Temp temp) {
+    public void setTemp(float temp) {
         this.temp = temp;
+    }
+
+    public float getFeels_like() {
+        return feels_like;
+    }
+
+    public void setFeels_like(float feels_like) {
+        this.feels_like = feels_like;
     }
 
     public int getPressure() {

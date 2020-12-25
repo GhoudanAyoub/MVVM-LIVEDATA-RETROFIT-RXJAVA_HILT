@@ -1,5 +1,6 @@
 package com.example.testret.UI.main;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.location.Address;
 import android.location.Geocoder;
@@ -33,5 +34,11 @@ public class UserUtils {
             e.printStackTrace();
             return result.toString();
         }
+    }
+
+    @SuppressLint("DefaultLocale")
+    public static String getDegreeToCelsius(float Kelvin){
+        double result = (Kelvin - 273.15);
+        return  String.format("%.1f",result);
     }
 }

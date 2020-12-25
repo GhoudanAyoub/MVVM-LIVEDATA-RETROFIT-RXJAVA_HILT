@@ -21,10 +21,8 @@ public class Repository {
     @SuppressLint("CheckResult")
     public Single<DailyForecasts> getTempFromRepo(double lat,
                                                   double lon,
-                                                  String exclude,
-                                                  String appid,
-                                                  String units){
-        return apiSettings.getTemp(lat,lon,exclude,appid,units);
+                                                  String appid){
+        return apiSettings.getTemp(lat,lon,appid);
     }
 
 }

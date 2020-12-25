@@ -18,15 +18,27 @@ public class DailyForecasts {
     private double timezone_offset;
     @SerializedName("daily")
     private List<Temperature> temperatureList = null;
+    @SerializedName("current")
+    private CurrentTemp currentTempList = null;
+    @SerializedName("hourly")
+    private List<HourlyTemp> hourlyTempList = null;
 
     public DailyForecasts() { }
 
-    public DailyForecasts(double lat, double lng, String timezone, double timezone_offset, List<Temperature> temperatureList) {
-        this.lat = lat;
-        this.lng = lng;
-        this.timezone = timezone;
-        this.timezone_offset = timezone_offset;
-        this.temperatureList = temperatureList;
+    public List<HourlyTemp> getHourlyTempList() {
+        return hourlyTempList;
+    }
+
+    public void setHourlyTempList(List<HourlyTemp> hourlyTempList) {
+        this.hourlyTempList = hourlyTempList;
+    }
+
+    public CurrentTemp getCurrentTempList() {
+        return currentTempList;
+    }
+
+    public void setCurrentTempList(CurrentTemp currentTempList) {
+        this.currentTempList = currentTempList;
     }
 
     public double getLat() {

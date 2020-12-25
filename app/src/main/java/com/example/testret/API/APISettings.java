@@ -11,8 +11,6 @@ public interface APISettings {
     Single<DailyForecasts> getTemp(
             @Query("lat") double lat,
             @Query("lon") double lon,
-            @Query("exclude") String exclude,
-            @Query("appid") String appid,
-            @Query("units") String units
+            @Query("appid") String appid
     );
 }
