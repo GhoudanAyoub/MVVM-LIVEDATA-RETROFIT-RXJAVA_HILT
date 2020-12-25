@@ -3,9 +3,16 @@ import com.example.testret.Models.DailyForecasts;
 
 import io.reactivex.Single;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 public interface APISettings {
 
-    @GET("2606235?apikey=gJAkBa36Nt1cYt5LesFNER34ekTp5bUR")
-    Single<DailyForecasts> getTemp();
+    @GET("onecall")
+    Single<DailyForecasts> getTemp(
+            @Query("lat") double lat,
+            @Query("lon") double lon,
+            @Query("exclude") String exclude,
+            @Query("appid") String appid,
+            @Query("units") String units
+    );
 }

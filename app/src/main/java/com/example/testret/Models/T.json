@@ -1,180 +1,288 @@
 {
-  "Headline": {
-    "EffectiveDate": "2020-05-10T08:00:00+02:00",
-    "EffectiveEpochDate": 1589090400,
-    "Severity": 3,
-    "Text": "Thunderstorms in the area Sunday morning through late Sunday night",
-    "Category": "thunderstorm",
-    "EndDate": "2020-05-11T08:00:00+02:00",
-    "EndEpochDate": 1589176800,
-    "MobileLink": "http://m.accuweather.com/en/fr/maroc/2606235/extended-weather-forecast/2606235?lang=en-us",
-    "Link": "http://www.accuweather.com/en/fr/maroc/2606235/daily-weather-forecast/2606235?lang=en-us"
-  },
-  "DailyForecasts": [
+  "lat": 32.22,
+  "lon": -8.22,
+  "timezone": "Africa/Casablanca",
+  "timezone_offset": 3600,
+  "daily": [
     {
-      "Date": "2020-05-10T07:00:00+02:00",
-      "EpochDate": 1589086800,
-      "Temperature": {
-        "Minimum": {
-          "Value": 43.0,
-          "Unit": "F",
-          "UnitType": 18
-        },
-        "Maximum": {
-          "Value": 70.0,
-          "Unit": "F",
-          "UnitType": 18
+      "dt": 1608897600,
+      "sunrise": 1608881512,
+      "sunset": 1608917654,
+      "temp": {
+        "day": 17.03,
+        "min": 12.01,
+        "max": 19.15,
+        "night": 14.5,
+        "eve": 16.48,
+        "morn": 12.04
+      },
+      "feels_like": {
+        "day": 15.32,
+        "night": 12.22,
+        "eve": 13.17,
+        "morn": 10.3
+      },
+      "pressure": 1019,
+      "humidity": 46,
+      "dew_point": 5.34,
+      "wind_speed": 0.93,
+      "wind_deg": 81,
+      "weather": [
+        {
+          "id": 804,
+          "main": "Clouds",
+          "description": "overcast clouds",
+          "icon": "04d"
         }
-      },
-      "Day": {
-        "Icon": 15,
-        "IconPhrase": "Thunderstorms",
-        "HasPrecipitation": true,
-        "PrecipitationType": "Rain",
-        "PrecipitationIntensity": "Moderate"
-      },
-      "Night": {
-        "Icon": 18,
-        "IconPhrase": "Rain",
-        "HasPrecipitation": true,
-        "PrecipitationType": "Rain",
-        "PrecipitationIntensity": "Light"
-      },
-      "Sources": [
-        "AccuWeather"
       ],
-      "MobileLink": "http://m.accuweather.com/en/fr/maroc/2606235/daily-weather-forecast/2606235?day=1&lang=en-us",
-      "Link": "http://www.accuweather.com/en/fr/maroc/2606235/daily-weather-forecast/2606235?day=1&lang=en-us"
+      "clouds": 100,
+      "pop": 0,
+      "uvi": 2.46
     },
     {
-      "Date": "2020-05-11T07:00:00+02:00",
-      "EpochDate": 1589173200,
-      "Temperature": {
-        "Minimum": {
-          "Value": 38.0,
-          "Unit": "F",
-          "UnitType": 18
-        },
-        "Maximum": {
-          "Value": 53.0,
-          "Unit": "F",
-          "UnitType": 18
+      "dt": 1608984000,
+      "sunrise": 1608967935,
+      "sunset": 1609004089,
+      "temp": {
+        "day": 18.57,
+        "min": 11.43,
+        "max": 20.12,
+        "night": 13.96,
+        "eve": 16.74,
+        "morn": 11.83
+      },
+      "feels_like": {
+        "day": 15.18,
+        "night": 11.61,
+        "eve": 12.79,
+        "morn": 9.8
+      },
+      "pressure": 1018,
+      "humidity": 43,
+      "dew_point": 6.06,
+      "wind_speed": 3.46,
+      "wind_deg": 117,
+      "weather": [
+        {
+          "id": 800,
+          "main": "Clear",
+          "description": "clear sky",
+          "icon": "01d"
         }
-      },
-      "Day": {
-        "Icon": 12,
-        "IconPhrase": "Showers",
-        "HasPrecipitation": true,
-        "PrecipitationType": "Rain",
-        "PrecipitationIntensity": "Light"
-      },
-      "Night": {
-        "Icon": 35,
-        "IconPhrase": "Partly cloudy",
-        "HasPrecipitation": false
-      },
-      "Sources": [
-        "AccuWeather"
       ],
-      "MobileLink": "http://m.accuweather.com/en/fr/maroc/2606235/daily-weather-forecast/2606235?day=2&lang=en-us",
-      "Link": "http://www.accuweather.com/en/fr/maroc/2606235/daily-weather-forecast/2606235?day=2&lang=en-us"
+      "clouds": 0,
+      "pop": 0,
+      "uvi": 2.95
     },
     {
-      "Date": "2020-05-12T07:00:00+02:00",
-      "EpochDate": 1589259600,
-      "Temperature": {
-        "Minimum": {
-          "Value": 43.0,
-          "Unit": "F",
-          "UnitType": 18
-        },
-        "Maximum": {
-          "Value": 57.0,
-          "Unit": "F",
-          "UnitType": 18
+      "dt": 1609070400,
+      "sunrise": 1609054356,
+      "sunset": 1609090525,
+      "temp": {
+        "day": 18.34,
+        "min": 10.79,
+        "max": 20.13,
+        "night": 12.66,
+        "eve": 16.17,
+        "morn": 10.79
+      },
+      "feels_like": {
+        "day": 16.06,
+        "night": 11.44,
+        "eve": 12.81,
+        "morn": 9.04
+      },
+      "pressure": 1018,
+      "humidity": 36,
+      "dew_point": 3.15,
+      "wind_speed": 1.11,
+      "wind_deg": 112,
+      "weather": [
+        {
+          "id": 800,
+          "main": "Clear",
+          "description": "clear sky",
+          "icon": "01d"
         }
-      },
-      "Day": {
-        "Icon": 3,
-        "IconPhrase": "Partly sunny",
-        "HasPrecipitation": false
-      },
-      "Night": {
-        "Icon": 36,
-        "IconPhrase": "Intermittent clouds",
-        "HasPrecipitation": false
-      },
-      "Sources": [
-        "AccuWeather"
       ],
-      "MobileLink": "http://m.accuweather.com/en/fr/maroc/2606235/daily-weather-forecast/2606235?day=3&lang=en-us",
-      "Link": "http://www.accuweather.com/en/fr/maroc/2606235/daily-weather-forecast/2606235?day=3&lang=en-us"
+      "clouds": 0,
+      "pop": 0,
+      "uvi": 3.03
     },
     {
-      "Date": "2020-05-13T07:00:00+02:00",
-      "EpochDate": 1589346000,
-      "Temperature": {
-        "Minimum": {
-          "Value": 42.0,
-          "Unit": "F",
-          "UnitType": 18
-        },
-        "Maximum": {
-          "Value": 59.0,
-          "Unit": "F",
-          "UnitType": 18
+      "dt": 1609156800,
+      "sunrise": 1609140775,
+      "sunset": 1609176963,
+      "temp": {
+        "day": 15.05,
+        "min": 9.71,
+        "max": 16.86,
+        "night": 11.03,
+        "eve": 14,
+        "morn": 9.71
+      },
+      "feels_like": {
+        "day": 12.65,
+        "night": 7.62,
+        "eve": 10.53,
+        "morn": 8.35
+      },
+      "pressure": 1016,
+      "humidity": 53,
+      "dew_point": 5.75,
+      "wind_speed": 1.98,
+      "wind_deg": 337,
+      "weather": [
+        {
+          "id": 800,
+          "main": "Clear",
+          "description": "clear sky",
+          "icon": "01d"
         }
-      },
-      "Day": {
-        "Icon": 12,
-        "IconPhrase": "Showers",
-        "HasPrecipitation": true,
-        "PrecipitationType": "Rain",
-        "PrecipitationIntensity": "Light"
-      },
-      "Night": {
-        "Icon": 7,
-        "IconPhrase": "Cloudy",
-        "HasPrecipitation": false
-      },
-      "Sources": [
-        "AccuWeather"
       ],
-      "MobileLink": "http://m.accuweather.com/en/fr/maroc/2606235/daily-weather-forecast/2606235?day=4&lang=en-us",
-      "Link": "http://www.accuweather.com/en/fr/maroc/2606235/daily-weather-forecast/2606235?day=4&lang=en-us"
+      "clouds": 0,
+      "pop": 0,
+      "uvi": 2.99
     },
     {
-      "Date": "2020-05-14T07:00:00+02:00",
-      "EpochDate": 1589432400,
-      "Temperature": {
-        "Minimum": {
-          "Value": 45.0,
-          "Unit": "F",
-          "UnitType": 18
-        },
-        "Maximum": {
-          "Value": 61.0,
-          "Unit": "F",
-          "UnitType": 18
+      "dt": 1609243200,
+      "sunrise": 1609227193,
+      "sunset": 1609263401,
+      "temp": {
+        "day": 13.47,
+        "min": 8.1,
+        "max": 15.74,
+        "night": 12.04,
+        "eve": 14.06,
+        "morn": 8.1
+      },
+      "feels_like": {
+        "day": 11.61,
+        "night": 9.51,
+        "eve": 11.09,
+        "morn": 6.4
+      },
+      "pressure": 1015,
+      "humidity": 53,
+      "dew_point": 4.2,
+      "wind_speed": 0.8,
+      "wind_deg": 15,
+      "weather": [
+        {
+          "id": 800,
+          "main": "Clear",
+          "description": "clear sky",
+          "icon": "01d"
         }
-      },
-      "Day": {
-        "Icon": 12,
-        "IconPhrase": "Showers",
-        "HasPrecipitation": true,
-        "PrecipitationType": "Rain",
-        "PrecipitationIntensity": "Light"
-      },
-      "Night": {
-        "Icon": 35,
-        "IconPhrase": "Partly cloudy",
-        "HasPrecipitation": false
-      },
-      "Sources": [
-        "AccuWeather"
       ],
-      "MobileLink": "http://m.accuweather.com/en/fr/maroc/2606235/daily-weather-forecast/2606235?day=5&lang=en-us",
-      "Link": "http://www.accuweather.com/en/fr/maroc/2606235/daily-weather-forecast/2606235?day=5&lang=en-us"
+      "clouds": 0,
+      "pop": 0,
+      "uvi": 2.94
+    },
+    {
+      "dt": 1609329600,
+      "sunrise": 1609313609,
+      "sunset": 1609349841,
+      "temp": {
+        "day": 14.02,
+        "min": 9.05,
+        "max": 15.31,
+        "night": 10.81,
+        "eve": 13.32,
+        "morn": 9.05
+      },
+      "feels_like": {
+        "day": 10.58,
+        "night": 6.07,
+        "eve": 9.7,
+        "morn": 6.91
+      },
+      "pressure": 1016,
+      "humidity": 59,
+      "dew_point": 6.15,
+      "wind_speed": 3.64,
+      "wind_deg": 28,
+      "weather": [
+        {
+          "id": 800,
+          "main": "Clear",
+          "description": "clear sky",
+          "icon": "01d"
+        }
+      ],
+      "clouds": 0,
+      "pop": 0,
+      "uvi": 3
+    },
+    {
+      "dt": 1609416000,
+      "sunrise": 1609400024,
+      "sunset": 1609436283,
+      "temp": {
+        "day": 12.12,
+        "min": 8.48,
+        "max": 13.49,
+        "night": 9.72,
+        "eve": 11.66,
+        "morn": 8.48
+      },
+      "feels_like": {
+        "day": 7.39,
+        "night": 5.03,
+        "eve": 7.3,
+        "morn": 4.15
+      },
+      "pressure": 1019,
+      "humidity": 52,
+      "dew_point": 2.7,
+      "wind_speed": 4.5,
+      "wind_deg": 33,
+      "weather": [
+        {
+          "id": 800,
+          "main": "Clear",
+          "description": "clear sky",
+          "icon": "01d"
+        }
+      ],
+      "clouds": 5,
+      "pop": 0,
+      "uvi": 3
+    },
+    {
+      "dt": 1609502400,
+      "sunrise": 1609486437,
+      "sunset": 1609522725,
+      "temp": {
+        "day": 12.47,
+        "min": 6.94,
+        "max": 14.17,
+        "night": 9.63,
+        "eve": 12.12,
+        "morn": 6.94
+      },
+      "feels_like": {
+        "day": 8.74,
+        "night": 5.65,
+        "eve": 8.31,
+        "morn": 3.51
+      },
+      "pressure": 1020,
+      "humidity": 48,
+      "dew_point": 1.81,
+      "wind_speed": 2.88,
+      "wind_deg": 36,
+      "weather": [
+        {
+          "id": 800,
+          "main": "Clear",
+          "description": "clear sky",
+          "icon": "01d"
+        }
+      ],
+      "clouds": 0,
+      "pop": 0,
+      "uvi": 3
     }
   ]
 }
