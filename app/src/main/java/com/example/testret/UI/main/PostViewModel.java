@@ -19,7 +19,7 @@ import io.reactivex.schedulers.Schedulers;
 
 @SuppressLint("CheckResult")
 public class PostViewModel extends ViewModel {
-    private Repository repository;
+    private final Repository repository;
 
     @ViewModelInject
     public PostViewModel(Repository repository) {
@@ -48,9 +48,9 @@ public class PostViewModel extends ViewModel {
         return liveData;
     }
 
-    public void getTempS(double lat, double lon,String appid) {
+    public void getTempS(double lat, double lon, String appid) {
         repository.getTempFromRepo(lat, lon, appid)
-                .subscribeOn(Schedulers.io())
+                .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(dailyForecasts ->
                                 liveData.setValue(dailyForecasts.getTemperatureList())
@@ -59,7 +59,7 @@ public class PostViewModel extends ViewModel {
 
     public void getCurrent(double lat, double lon, String appid) {
         repository.getTempFromRepo(lat, lon, appid)
-                .subscribeOn(Schedulers.io())
+                .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(dailyForecasts ->
                                 dailyForecastsMutableLiveData.setValue(dailyForecasts.getCurrentTempList())
@@ -69,7 +69,7 @@ public class PostViewModel extends ViewModel {
 
     public void getHourly(double lat, double lon, String appid) {
         repository.getTempFromRepo(lat, lon, appid)
-                .subscribeOn(Schedulers.io())
+                .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(dailyForecasts ->
                                 hourlyTempMutableLiveData.setValue(dailyForecasts.getHourlyTempList())

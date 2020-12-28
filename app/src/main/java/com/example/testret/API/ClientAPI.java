@@ -17,7 +17,7 @@ public class ClientAPI {
     @Provides
     @Singleton
     public static APISettings ClientAPI() {
-            String base_url = "https://api.openweathermap.org/data/2.5/";
+        String base_url = "https://api.openweathermap.org/data/2.5/";
         return new Retrofit.Builder()
                 .baseUrl(base_url)
                 .addConverterFactory(GsonConverterFactory.create())

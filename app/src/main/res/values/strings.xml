@@ -1,13 +1,26 @@
 <resources>
-    <string name="app_name">testRet</string>
-    <string name="title_activity_login">Sign in</string>
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
-    <string name="title_activity_maps">Map</string>
+    <string name="app_name">Weather Data</string>
+    <string name="Now">Now</string>
+    <string name="ActivateGpsRequest">"Please Activate Your Gps To Get Your Current Weather"</string>
+    <string name="okay">Okay</string>
+    <string name="Morocco">Morocco</string>
+    <string name="marrakech">Marrakech</string>
+    <string name="next_7_days">Next 7 days</string>
+    <string name="todo">TODO</string>
+    <string name="today">Today</string>
+    <string name="wed_3_dec">wed,3 Dec</string>
+    <string name="_24c">24C</string>
+    <string name="feel_like_15">Feel like 15</string>
+    <string name="sunrise">SUNRISE</string>
+    <string name="sunset">SUNSET</string>
+    <string name="_7_38am">7:38am</string>
+    <string name="_3_55am">3:55am</string>
+    <string name="precipitation">PRECIPITATION</string>
+    <string name="humidity">HUMIDITY</string>
+    <string name="_90">90%</string>
+    <string name="_77">77%</string>
+    <string name="wind">WIND</string>
+    <string name="pressure">PRESSURE</string>
+    <string name="_11_km_h">11 km/h</string>
+    <string name="_1015_hpa">1015 hpa</string>
 </resources>

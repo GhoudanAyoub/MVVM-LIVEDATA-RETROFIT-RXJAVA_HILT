@@ -34,7 +34,8 @@ public class Temperature {
     @SerializedName("uvi")
     private float uvi;
 
-    public Temperature() { }
+    public Temperature() {
+    }
 
     public double getDt() {
         return dt;

@@ -4,75 +4,66 @@ import com.google.gson.annotations.SerializedName;
 
 public class Temp {
     @SerializedName("day")
-    private String day;
+    private float day;
     @SerializedName("min")
-    private String min;
+    private float min;
     @SerializedName("max")
-    private String max;
+    private float max;
     @SerializedName("night")
-    private String night;
+    private float night;
     @SerializedName("eve")
-    private String eve;
+    private float eve;
     @SerializedName("morn")
-    private String morn;
+    private float morn;
 
     public Temp() {
     }
 
-    public Temp(String day, String min, String max, String night, String eve, String morn) {
-        this.day = day;
-        this.min = min;
-        this.max = max;
-        this.night = night;
-        this.eve = eve;
-        this.morn = morn;
-    }
-
-    public String getDay() {
+    public float getDay() {
         return day;
     }
 
-    public void setDay(String day) {
+    public void setDay(float day) {
         this.day = day;
     }
 
-    public String getMin() {
+    public float getMin() {
         return min;
     }
 
-    public void setMin(String min) {
+    public void setMin(float min) {
         this.min = min;
     }
 
-    public String getMax() {
+    public float getMax() {
         return max;
     }
 
-    public void setMax(String max) {
+    public void setMax(float max) {
         this.max = max;
     }
 
-    public String getNight() {
+    public float getNight() {
         return night;
     }
 
-    public void setNight(String night) {
+    public void setNight(float night) {
         this.night = night;
     }
 
-    public String getEve() {
+    public float getEve() {
         return eve;
     }
 
-    public void setEve(String eve) {
+    public void setEve(float eve) {
         this.eve = eve;
     }
 
-    public String getMorn() {
+    public float getMorn() {
         return morn;
     }
 
-    public void setMorn(String morn) {
+    public void setMorn(float morn) {
         this.morn = morn;
     }
 }

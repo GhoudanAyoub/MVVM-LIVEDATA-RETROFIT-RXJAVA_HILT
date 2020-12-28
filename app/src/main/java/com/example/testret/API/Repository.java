@@ -7,10 +7,9 @@ import com.example.testret.Models.DailyForecasts;
 import javax.inject.Inject;
 
 import io.reactivex.Single;
-import retrofit2.http.Query;
 
 public class Repository {
-    private APISettings apiSettings;
+    private final APISettings apiSettings;
 
     @Inject
     public Repository(APISettings apiSettings) {
@@ -21,8 +20,8 @@ public class Repository {
     @SuppressLint("CheckResult")
     public Single<DailyForecasts> getTempFromRepo(double lat,
                                                   double lon,
-                                                  String appid){
-        return apiSettings.getTemp(lat,lon,appid);
+                                                  String appid) {
+        return apiSettings.getTemp(lat, lon, appid);
     }
 
 }

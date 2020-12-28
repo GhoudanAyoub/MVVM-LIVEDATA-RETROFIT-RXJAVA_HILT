@@ -1,7 +1,5 @@
 package com.example.testret.Models;
 
-import com.example.testret.Models.Temperature;
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -23,7 +21,8 @@ public class DailyForecasts {
     @SerializedName("hourly")
     private List<HourlyTemp> hourlyTempList = null;
 
-    public DailyForecasts() { }
+    public DailyForecasts() {
+    }
 
     public List<HourlyTemp> getHourlyTempList() {
         return hourlyTempList;

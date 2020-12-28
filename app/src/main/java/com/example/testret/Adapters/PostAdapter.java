@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.testret.Models.Temperature;
 import com.example.testret.R;
+import com.example.testret.UI.main.UserUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder> {
     private List<Temperature> moviesList = new ArrayList<>();
-    private Context context;
+    private final Context context;
 
     public PostAdapter(Context context) {
         this.context = context;
@@ -38,11 +39,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
-        holder.dateTextView.setText(moviesList.get(position).getTemp().getDay());
-        holder.linkTextView.setText(moviesList.get(position).getTemp().getEve());
-        holder.maxTextView.setText(moviesList.get(position).getTemp().getMax());
-        holder.minTextView.setText(moviesList.get(position).getTemp().getMin());
-        setImage(holder.imagetemp,moviesList.get(position).getWeather().get(0).getIcon());
+        holder.dateTextView.setText(UserUtils.getDateDDMMFromNumber(moviesList.get(position).getDt()));
+        holder.maxTextView.setText(new StringBuilder().append(UserUtils.getDegreeToCelsius(moviesList.get(position).getTemp().getMax())).append(" °"));
+        holder.minTextView.setText(new StringBuilder().append(UserUtils.getDegreeToCelsius(moviesList.get(position).getTemp().getMin())).append(" °"));
+        setImage(holder.imagetemp, moviesList.get(position).getWeather().get(0).getIcon());
     }
 
     @Override
@@ -56,12 +56,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     }
 
     @SuppressLint("CheckResult")
-    private void setImage(final ImageView imageView, final String value){
+    private void setImage(final ImageView imageView, final String value) {
         Completable.timer(10, TimeUnit.MILLISECONDS
                 , AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(() -> {
-                    switch (value){
+                    switch (value) {
                         case "01d":
                         case "01n":
                             imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.d01d));
@@ -102,14 +102,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     }
 
     public class PostViewHolder extends RecyclerView.ViewHolder {
-        public TextView dateTextView, minTextView, maxTextView, linkTextView;
-        private ImageView imagetemp;
+        public TextView dateTextView, minTextView, maxTextView;
+        private final ImageView imagetemp;
 
         public PostViewHolder(@NonNull View itemView) {
             super(itemView);
 
             dateTextView = itemView.findViewById(R.id.tvDate);
-            linkTextView = itemView.findViewById(R.id.tvLink);
             minTextView = itemView.findViewById(R.id.tvLowTemperature);
             maxTextView = itemView.findViewById(R.id.tvHighTemperature);
             imagetemp = itemView.findViewById(R.id.imagetemp);

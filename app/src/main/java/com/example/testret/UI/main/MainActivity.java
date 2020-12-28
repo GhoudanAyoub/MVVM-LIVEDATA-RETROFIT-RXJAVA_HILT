@@ -1,11 +1,15 @@
 package com.example.testret.UI.main;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Looper;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,15 +19,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.testret.Adapters.HourlyAdapter;
-import com.example.testret.Adapters.PostAdapter;
-import com.example.testret.Models.Temperature;
 import com.example.testret.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
-import com.google.gson.internal.$Gson$Preconditions;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -31,11 +32,6 @@ import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.DialogOnDeniedPermissionListener;
 import com.karumi.dexter.listener.single.PermissionListener;
-
-import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -48,18 +44,37 @@ public class MainActivity extends AppCompatActivity {
     private HourlyAdapter hourlyAdapter;
     private LocationRequest locationRequest;
     private LocationCallback locationCallback;
-    private TextView locationTxt,pressureTxt,windTxt,precipitationTxt,CurrentDay,humidityTxt,sunriseTxt,sunsetTxt,FeelLikeTxt,currentWeatherTxt;
+    private TextView locationTxt, pressureTxt, windTxt, precipitationTxt, CurrentDay, humidityTxt, sunriseTxt, sunsetTxt, FeelLikeTxt, currentWeatherTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         postViewModel = new ViewModelProvider(this).get(PostViewModel.class);
         _view();
         hourlyAdapter = new HourlyAdapter(getApplicationContext());
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setAdapter(hourlyAdapter);
-        _GetCurrentUserPermission();
+        if (isMapEnabled()) {
+            _GetCurrentUserPermission();
+        } else {
+            buildAlertMessageNoGps();
+        }
+    }
+
+    public boolean isMapEnabled() {
+        return ((LocationManager) this.getSystemService(Context.LOCATION_SERVICE)).isProviderEnabled(LocationManager.GPS_PROVIDER);
+    }
+
+    private void buildAlertMessageNoGps() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(getString(R.string.ActivateGpsRequest))
+                .setCancelable(false)
+                .setPositiveButton(getString(R.string.okay), (dialog, id) -> startActivityForResult(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS), 333));
+        final AlertDialog alert = builder.create();
+        alert.show();
     }
 
     private void _view() {
@@ -73,8 +88,8 @@ public class MainActivity extends AppCompatActivity {
         sunsetTxt = findViewById(R.id.sunsetTxt);
         currentWeatherTxt = findViewById(R.id.currentWeatherTxt);
         FeelLikeTxt = findViewById(R.id.FeelLikeTxt);
-        CurrentDay= findViewById(R.id.CurrentDay);
-        findViewById(R.id.textView2).setOnClickListener(v-> startActivity(new Intent(getApplicationContext(),Next7Days.class)));
+        CurrentDay = findViewById(R.id.CurrentDay);
+        findViewById(R.id.textView2).setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), Next7Days.class)));
     }
 
     private void _GetCurrentUserPermission() {
@@ -153,35 +168,21 @@ public class MainActivity extends AppCompatActivity {
         fusedLocationProviderClient.getLastLocation()
                 .addOnFailureListener(Throwable::printStackTrace)
                 .addOnSuccessListener(location -> {
-                    if (location!=null){
-                        String MyLocation = UserUtils.getAddressFromLocation(getApplicationContext(),location);
+                    if (location != null) {
+                        String MyLocation = UserUtils.getAddressFromLocation(getApplicationContext(), location);
                         locationTxt.setText(MyLocation);
-                        String APP_ID ="ae82f77ec5397be4e9eca95799584087";
-                        //Daily Temp
-                        postViewModel.getTempS(location.getLatitude(), location.getLongitude(),
-                                APP_ID);
-                        postViewModel.getLiveData().observe(this, temperatures -> { });
+                        String APP_ID = "ae82f77ec5397be4e9eca95799584087";
 
                         //Current Temp
                         postViewModel.getCurrent(location.getLatitude(), location.getLongitude(),
                                 APP_ID);
-                        postViewModel.getCurrentDailyForecastsMutableLiveData().observe(this,currentTemp -> {
+                        postViewModel.getCurrentDailyForecastsMutableLiveData().observe(this, currentTemp -> {
                             try {
-                                long myLong = System.currentTimeMillis()-((long) (currentTemp.getSunrise() )) ;
-                                long myLong2 = System.currentTimeMillis()-((long) (currentTemp.getSunset() )) ;
-                                long myLong3 = System.currentTimeMillis()-((long) (currentTemp.getSunset() )) ;
-                                Timestamp ts=new Timestamp(myLong);
-                                Timestamp ts2=new Timestamp(myLong2);
-                                Timestamp ts3=new Timestamp(myLong3);
-                                Date date=new Date(ts.getTime());
-                                Date date2=new Date(ts2.getTime());
-                                Date date3=new Date(ts3.getTime());
-
-                                sunsetTxt.setText(new StringBuilder().append(date2).append(" pm"));
-                                sunriseTxt.setText(new StringBuilder().append(date).append(" am"));
+                                sunsetTxt.setText(new StringBuilder().append(UserUtils.getDateHHMMFromNumber(currentTemp.getSunset())).append(" pm"));
+                                sunriseTxt.setText(new StringBuilder().append(UserUtils.getDateHHMMFromNumber(currentTemp.getSunrise())).append(" am"));
                                 currentWeatherTxt.setText(new StringBuilder().append(UserUtils.getDegreeToCelsius(currentTemp.getTemp())).append(" °C"));
                                 FeelLikeTxt.setText(new StringBuilder().append("Feels like ").append(UserUtils.getDegreeToCelsius(currentTemp.getFeels_like())).append(" °C"));
-                                CurrentDay.setText(new StringBuilder().append(date3));
+                                CurrentDay.setText(new StringBuilder().append(UserUtils.getDateDDMMFromNumber(currentTemp.getDt())));
                                 pressureTxt.setText(new StringBuilder().append(currentTemp.getPressure()).append(" hpa"));
                                 windTxt.setText(new StringBuilder().append(currentTemp.getWind_speed()).append(" km/h"));
                                 precipitationTxt.setText(new StringBuilder().append(currentTemp.getPop()).append(" %"));
@@ -196,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
                         //Hourly Temp
                         postViewModel.getHourly(location.getLatitude(), location.getLongitude(),
                                 APP_ID);
-                        postViewModel.getHourlyTempMutableLiveData().observe(this,hourlyTemps -> hourlyAdapter.setList(hourlyTemps));
+                        postViewModel.getHourlyTempMutableLiveData().observe(this, hourlyTemps -> hourlyAdapter.setList(hourlyTemps));
 
                     }
                 });
