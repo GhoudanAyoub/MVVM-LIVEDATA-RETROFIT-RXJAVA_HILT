@@ -23,4 +23,8 @@
     <string name="pressure">PRESSURE</string>
     <string name="_11_km_h">11 km/h</string>
     <string name="_1015_hpa">1015 hpa</string>
+    <string name="AdMobApplicationId">ca-app-pub-8004564561830355~4377396962</string>
+    <string name="adMobBannerId">ca-app-pub-8004564561830355/2809148518</string>
+<!--  real  ca-app-pub-8004564561830355/2809148518
+	test ca-app-pub-3940256099942544/6300978111-->
 </resources>

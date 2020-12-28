@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -57,14 +58,14 @@ public class MainActivity extends AppCompatActivity {
         hourlyAdapter = new HourlyAdapter(getApplicationContext());
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setAdapter(hourlyAdapter);
-        if (isMapEnabled()) {
+        if (isLocationEnabled()) {
             _GetCurrentUserPermission();
         } else {
             buildAlertMessageNoGps();
         }
     }
 
-    public boolean isMapEnabled() {
+    public boolean isLocationEnabled() {
         return ((LocationManager) this.getSystemService(Context.LOCATION_SERVICE)).isProviderEnabled(LocationManager.GPS_PROVIDER);
     }
 
@@ -105,9 +106,7 @@ public class MainActivity extends AppCompatActivity {
                 .withListener(new PermissionListener() {
                     @Override
                     public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-                        _BuildLocationRequest();
-                        _BuildLocationCallBack();
-                        _init();
+                        init();
                     }
 
                     @Override
@@ -122,14 +121,23 @@ public class MainActivity extends AppCompatActivity {
                 }).check();
     }
 
-    private void _init() {
+    private void init(){
+        _BuildLocationRequest();
+        _BuildLocationCallBack();
+        _UpdateLocation();
+    }
+
+    private void _UpdateLocation(){
         if (fusedLocationProviderClient == null) {
             fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getApplicationContext());
-            if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                    ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION)
+                    != PackageManager.PERMISSION_GRANTED &&
+                    ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION)
+                            != PackageManager.PERMISSION_GRANTED) {
                 return;
             }
             fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper());
+            _FindUserLocation();
         }
     }
 
@@ -150,25 +158,21 @@ public class MainActivity extends AppCompatActivity {
                 public void onLocationResult(LocationResult locationResult) {
                     super.onLocationResult(locationResult);
                     Location location = locationResult.getLastLocation();
-                    if (location != null) {
+                    if (location!=null)
                         _FindUserLocation();
-                    }
                 }
             };
         }
     }
 
     private void _FindUserLocation() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED &&
-                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
-                        != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
         fusedLocationProviderClient.getLastLocation()
                 .addOnFailureListener(Throwable::printStackTrace)
-                .addOnSuccessListener(location -> {
-                    if (location != null) {
+                .addOnSuccessListener(location -> {if (location != null) {
                         String MyLocation = UserUtils.getAddressFromLocation(getApplicationContext(), location);
                         locationTxt.setText(MyLocation);
                         String APP_ID = "ae82f77ec5397be4e9eca95799584087";

@@ -76,6 +76,7 @@ public class Next7Days extends AppCompatActivity {
         DailyLocationTxt = findViewById(R.id.DailyLocationTxt);
     }
 
+
     private void _GetCurrentUserPermission() {
         PermissionListener dialogPermissionListener =
                 DialogOnDeniedPermissionListener.Builder
@@ -89,9 +90,7 @@ public class Next7Days extends AppCompatActivity {
                 .withListener(new PermissionListener() {
                     @Override
                     public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-                        _BuildLocationRequest();
-                        _BuildLocationCallBack();
-                        _init();
+                        init();
                     }
 
                     @Override
@@ -106,14 +105,23 @@ public class Next7Days extends AppCompatActivity {
                 }).check();
     }
 
-    private void _init() {
+    private void init(){
+        _BuildLocationRequest();
+        _BuildLocationCallBack();
+        _UpdateLocation();
+    }
+
+    private void _UpdateLocation(){
         if (fusedLocationProviderClient == null) {
             fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getApplicationContext());
-            if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                    ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION)
+                    != PackageManager.PERMISSION_GRANTED &&
+                    ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION)
+                            != PackageManager.PERMISSION_GRANTED) {
                 return;
             }
             fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper());
+            _FindUserLocation();
         }
     }
 
@@ -134,9 +142,8 @@ public class Next7Days extends AppCompatActivity {
                 public void onLocationResult(LocationResult locationResult) {
                     super.onLocationResult(locationResult);
                     Location location = locationResult.getLastLocation();
-                    if (location != null) {
+                    if (location!=null)
                         _FindUserLocation();
-                    }
                 }
             };
         }
