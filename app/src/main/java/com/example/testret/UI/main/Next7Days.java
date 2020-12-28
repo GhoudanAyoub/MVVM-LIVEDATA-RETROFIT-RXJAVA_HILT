@@ -7,6 +7,8 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.os.Looper;
+import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
@@ -18,6 +20,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.testret.Adapters.PostAdapter;
 import com.example.testret.R;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -38,6 +44,8 @@ import dagger.hilt.android.AndroidEntryPoint;
 @SuppressLint("NonConstantResourceId")
 @AndroidEntryPoint
 public class Next7Days extends AppCompatActivity {
+
+    private AdView mAdView;
 
     @OnClick(R.id.floatingActionButton2)
     public void BackToMain() {
@@ -74,8 +82,16 @@ public class Next7Days extends AppCompatActivity {
         progressDialog.setMessage("Checking Your Current Weather....");
         hourlyRecycle = findViewById(R.id.hourlyRecycle);
         DailyLocationTxt = findViewById(R.id.DailyLocationTxt);
+        MobileAds.initialize(this);
+        mAdView = findViewById(R.id.adView);
+        mAdView.loadAd(new AdRequest.Builder().build());
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+                Log.d("onAdFailedToLoad", "This is why: "+errorCode);
+            }
+        });
     }
-
 
     private void _GetCurrentUserPermission() {
         PermissionListener dialogPermissionListener =
