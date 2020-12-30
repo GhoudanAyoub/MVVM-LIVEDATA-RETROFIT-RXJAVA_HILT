@@ -9,9 +9,10 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Looper;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     private HourlyAdapter hourlyAdapter;
     private LocationRequest locationRequest;
     private LocationCallback locationCallback;
+    private ProgressBar progressBar;
     private TextView locationTxt, pressureTxt, windTxt, precipitationTxt, CurrentDay, humidityTxt, sunriseTxt, sunsetTxt, FeelLikeTxt, currentWeatherTxt;
 
     @Override
@@ -76,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
                 .setPositiveButton(getString(R.string.okay), (dialog, id) -> startActivityForResult(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS), 333));
         final AlertDialog alert = builder.create();
         alert.show();
+        _GetCurrentUserPermission();
     }
 
     private void _view() {
@@ -90,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
         currentWeatherTxt = findViewById(R.id.currentWeatherTxt);
         FeelLikeTxt = findViewById(R.id.FeelLikeTxt);
         CurrentDay = findViewById(R.id.CurrentDay);
+        progressBar = findViewById(R.id.progressBar);
         findViewById(R.id.textView2).setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), Next7Days.class)));
     }
 
@@ -173,6 +177,7 @@ public class MainActivity extends AppCompatActivity {
         fusedLocationProviderClient.getLastLocation()
                 .addOnFailureListener(Throwable::printStackTrace)
                 .addOnSuccessListener(location -> {if (location != null) {
+                    progressBar.setVisibility(View.VISIBLE);
                         String MyLocation = UserUtils.getAddressFromLocation(getApplicationContext(), location);
                         locationTxt.setText(MyLocation);
                         String APP_ID = "ae82f77ec5397be4e9eca95799584087";
@@ -182,7 +187,8 @@ public class MainActivity extends AppCompatActivity {
                                 APP_ID);
                         postViewModel.getCurrentDailyForecastsMutableLiveData().observe(this, currentTemp -> {
                             try {
-                                sunsetTxt.setText(new StringBuilder().append(UserUtils.getDateHHMMFromNumber(currentTemp.getSunset())).append(" pm"));
+                                progressBar.setVisibility(View.GONE);
+                                sunsetTxt.setText(new StringBuilder().append(UserUtils.getDateHHMMFromNumber(currentTemp.getSunset())).append(" h"));
                                 sunriseTxt.setText(new StringBuilder().append(UserUtils.getDateHHMMFromNumber(currentTemp.getSunrise())).append(" am"));
                                 currentWeatherTxt.setText(new StringBuilder().append(UserUtils.getDegreeToCelsius(currentTemp.getTemp())).append(" °C"));
                                 FeelLikeTxt.setText(new StringBuilder().append("Feels like ").append(UserUtils.getDegreeToCelsius(currentTemp.getFeels_like())).append(" °C"));
